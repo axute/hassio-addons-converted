@@ -1,0 +1,25 @@
+name: dockhand
+version: 1.0.0
+slug: dockhand
+description: 'Portainer Slayer'
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: application
+boot: auto
+options:
+  SKIP_DF_COLLECTION: 'false'
+  DISABLE_LOCAL_LOGIN: 'true'
+schema:
+  SKIP_DF_COLLECTION: 'str?'
+  DISABLE_LOCAL_LOGIN: 'str?'
+image: 'fnsys/dockhand:v1.0.14'
+ingress: true
+ingress_port: 3000
+panel_icon: 'mdi:link-variant'
+backup: true
+environment:
+  DATA_DIR: /data
