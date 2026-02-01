@@ -1,5 +1,5 @@
 name: dockhand
-version: 1.0.4
+version: 1.0.5
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -16,6 +16,7 @@ options:
 schema:
   SKIP_DF_COLLECTION: 'str?'
   DISABLE_LOCAL_LOGIN: 'str?'
+panel_port: 3000
 backup: hot
 ports:
   3000/tcp: 8985
