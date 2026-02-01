@@ -1,5 +1,5 @@
 name: dockhand
-version: 1.0.1
+version: 1.0.2
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -12,11 +12,10 @@ startup: application
 boot: auto
 options:
   SKIP_DF_COLLECTION: 'false'
-  DISABLE_LOCAL_LOGIN: 'true'
+  DISABLE_LOCAL_LOGIN: 'false'
 schema:
   SKIP_DF_COLLECTION: 'str?'
   DISABLE_LOCAL_LOGIN: 'str?'
-image: 'fnsys/dockhand:v1.0.14'
 icon: 'mdi:docker'
 ingress: true
 ingress_port: 3000
