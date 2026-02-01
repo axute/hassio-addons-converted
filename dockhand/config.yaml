@@ -1,5 +1,5 @@
 name: dockhand
-version: 1.0.3
+version: 1.0.4
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -16,7 +16,6 @@ options:
 schema:
   SKIP_DF_COLLECTION: 'str?'
   DISABLE_LOCAL_LOGIN: 'str?'
-icon: 'mdi:docker'
 backup: hot
 ports:
   3000/tcp: 8985
