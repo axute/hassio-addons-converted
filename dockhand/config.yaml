@@ -1,5 +1,5 @@
 name: dockhand
-version: 1.0.0
+version: 1.0.1
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -17,9 +17,10 @@ schema:
   SKIP_DF_COLLECTION: 'str?'
   DISABLE_LOCAL_LOGIN: 'str?'
 image: 'fnsys/dockhand:v1.0.14'
+icon: 'mdi:docker'
 ingress: true
 ingress_port: 3000
 panel_icon: 'mdi:link-variant'
-backup: true
+backup: hot
 environment:
   DATA_DIR: /data
