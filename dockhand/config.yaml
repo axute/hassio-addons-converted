@@ -18,6 +18,8 @@ schema:
   DISABLE_LOCAL_LOGIN: 'str?'
 webui: 'http://[HOST]:[PORT:3000]/'
 backup: hot
+map:
+  - 'share:rw'
 ports:
   3000/tcp: 8985
 environment:
