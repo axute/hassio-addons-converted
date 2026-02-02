@@ -1,5 +1,5 @@
 name: dockhand
-version: 1.0.10
+version: 1.0.11
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -10,12 +10,6 @@ arch:
   - i386
 startup: application
 boot: auto
-options:
-  SKIP_DF_COLLECTION: 'false'
-  DISABLE_LOCAL_LOGIN: 'false'
-schema:
-  SKIP_DF_COLLECTION: 'str?'
-  DISABLE_LOCAL_LOGIN: 'str?'
 webui: 'http://[HOST]:[PORT:3000]/'
 backup: hot
 map:
