@@ -1,5 +1,5 @@
 name: dockhand
-version: 1.0.11
+version: 1.0.12
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -18,3 +18,17 @@ ports:
   3000/tcp: 8985
 environment:
   DATA_DIR: /data
+  SKIP_DF_COLLECTION: '{options.skip_df_collection}'
+  DISABLE_LOCAL_LOGIN: '{options.disable_local_login}'
+  PUID: '{options.puid}'
+  PGID: '{options.pgid}'
+options:
+  skip_df_collection: 'false'
+  disable_local_login: 'false'
+  puid: '1000'
+  pgid: '1000'
+schema:
+  skip_df_collection: 'str?'
+  disable_local_login: 'str?'
+  puid: 'str?'
+  pgid: 'str?'
