@@ -1,5 +1,5 @@
 name: 'HAOS Add-on Converter'
-version: 1.0.2
+version: 1.0.3
 slug: haos_addon_converter
 description: 'Web-Converter zum Konvertieren von Docker-Images in Home Assistant Add-ons.'
 arch:
