@@ -6,7 +6,8 @@ if [ -f /data/options.json ]; then
     # Wir extrahieren die Keys und Values mit sed. 
     # Dies funktioniert zuverlässig für flache JSON-Objekte, wie sie in HA Options üblich sind.
     # Wir suchen nach "key": "value" oder "key": 123
-    
+    echo "/data/options.json found"
+
     # Temporäre Datei für die Exporte
     EXPORT_FILE=$(mktemp)
     
