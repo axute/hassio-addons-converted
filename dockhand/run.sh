@@ -6,6 +6,7 @@ if [ -f /data/options.json ]; then
     for key in $(jq -r 'keys[]' /data/options.json); do
         value=$(jq -r --arg k "$key" '.[$k]' /data/options.json)
         export "$key=$value"
+        echo "export $key=$value"
     done
 fi
 
