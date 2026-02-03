@@ -1,7 +1,7 @@
 name: OCRmyPDFauto
-version: 1.0.0
+version: 1.0.1
 slug: ocrmypdfauto
-description: 'Old but good base: cmccambridge/ocrmypdf-auto, all files are stored in /share/ocrmypdfauto/.'
+description: 'Old but good base: cmccambridge/ocrmypdf-auto'
 arch:
   - aarch64
   - amd64
