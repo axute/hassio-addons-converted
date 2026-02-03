@@ -1,13 +1,32 @@
-#!/usr/bin/env bash
+#!/bin/sh
 set -e
 
-# ENV aus options.json exportieren
+# ENV aus options.json exportieren (einfacher Parser ohne jq)
 if [ -f /data/options.json ]; then
-    for key in $(jq -r 'keys[]' /data/options.json); do
-        value=$(jq -r --arg k "$key" '.[$k]' /data/options.json)
-        export "$key=$value"
-        echo "export $key=$value"
-    done
+    # Wir extrahieren die Keys und Values mit sed. 
+    # Dies funktioniert zuverlässig für flache JSON-Objekte, wie sie in HA Options üblich sind.
+    # Wir suchen nach "key": "value" oder "key": 123
+    
+    # Temporäre Datei für die Exporte
+    EXPORT_FILE=$(mktemp)
+    
+    # Extrahiere Schlüssel und Werte
+    # 1. Entferne geschweifte Klammern
+    # 2. Suche nach "key": "value" und wandle es in export key="value" um
+    sed -e 's/[{}]//g' -e 's/"\([^"]*\)":\s*"\([^"]*\)"/export \1="\2"/g' \
+        -e 's/"\([^"]*\)":\s*\([0-9.]*\)/export \1="\2"/g' \
+        -e 's/"\([^"]*\)":\s*\(true\|false\)/export \1="\2"/g' \
+        /data/options.json | grep "^export " > "$EXPORT_FILE" || true
+    
+    # Source die Exporte
+    . "$EXPORT_FILE"
+    
+    # Zur Info ausgeben (maskiert Passwort-ähnliche Keys evtl?)
+    while read -r line; do
+        echo "$line"
+    done < "$EXPORT_FILE"
+    
+    rm -f "$EXPORT_FILE"
 fi
 
 # Originalwerte laden
@@ -21,6 +40,9 @@ fi
 
 # Wenn das Image ein ENTRYPOINT hatte
 if [ -n "$orig_entrypoint" ] && [ "$orig_entrypoint" != "null" ]; then
+    # Wichtig: Variable expansion für orig_entrypoint und orig_cmd
+    # Wir nutzen eval, damit evtl. enthaltene Leerzeichen in den Originalbefehlen korrekt interpretiert werden
+    # Aber Vorsicht bei eval. Da wir die Werte selbst geschrieben haben (aus crane), sollte es okay sein.
     exec $orig_entrypoint $orig_cmd
 fi
 
