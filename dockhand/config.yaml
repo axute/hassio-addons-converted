@@ -1,5 +1,5 @@
 name: dockhand
-version: 1.0.16
+version: 1.0.17
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -10,9 +10,6 @@ arch:
   - i386
 startup: application
 boot: auto
-entrypoint:
-  - /run.sh
-command: []
 webui: 'http://[HOST]:[PORT:3000]/'
 backup: hot
 map:
