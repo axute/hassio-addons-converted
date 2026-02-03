@@ -1,0 +1,1 @@
+Docker image for this app: https://github.com/ChristianScheub/Typescript_Capacitor_SecureQR/
