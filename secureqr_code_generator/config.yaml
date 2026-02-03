@@ -1,5 +1,5 @@
 name: 'SecureQR-Code Generator'
-version: 1.0.0
+version: 1.0.1
 slug: secureqr_code_generator
 description: 'Dockerized SecureQR-Code Generator'
 arch:
@@ -10,6 +10,6 @@ arch:
   - i386
 startup: application
 boot: auto
-ingress: true
-ingress_port: 5173
-panel_icon: 'mdi:qrcode'
+webui: 'http://[HOST]:[PORT:5173]/'
+ports:
+  5173/tcp: 5173
