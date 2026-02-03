@@ -12,12 +12,17 @@ if [ -f /data/options.json ]; then
     EXPORT_FILE=$(mktemp)
     
     # Extrahiere Schlüssel und Werte
-    # 1. Entferne geschweifte Klammern
-    # 2. Suche nach "key": "value" und wandle es in export key="value" um
-    sed -e 's/[{}]//g' -e 's/"\([^"]*\)":\s*"\([^"]*\)"/export \1="\2"/g' \
-        -e 's/"\([^"]*\)":\s*\([0-9.]*\)/export \1="\2"/g' \
-        -e 's/"\([^"]*\)":\s*\(true\|false\)/export \1="\2"/g' \
-        /data/options.json | grep "^export " > "$EXPORT_FILE" || true
+    # 1. Suche Zeilen mit ":"
+    # 2. Entferne führende Leerzeichen
+    # 3. Entferne abschließendes Komma und Leerzeichen
+    # 4. Ersetze "key": "value" durch export key="value" (unterstützt Strings, Zahlen, Booleans)
+    grep ":" /data/options.json | sed -E \
+        -e 's/^[[:space:]]*//' \
+        -e 's/[[:space:]]*,?$//' \
+        -e 's/"([^"]*)":[[:space:]]*"([^"]*)"/export \1="\2"/' \
+        -e 's/"([^"]*)":[[:space:]]*([0-9.]+)/export \1="\2"/' \
+        -e 's/"([^"]*)":[[:space:]]*(true|false)/export \1="\2"/' \
+        | grep "^export " > "$EXPORT_FILE" || true
     
     # Source die Exporte
     . "$EXPORT_FILE"
