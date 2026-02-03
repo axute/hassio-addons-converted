@@ -1,5 +1,5 @@
 name: dockhand
-version: 1.0.14
+version: 1.0.15
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -10,6 +10,9 @@ arch:
   - i386
 startup: application
 boot: auto
+entrypoint:
+  - /run.sh
+command: []
 webui: 'http://[HOST]:[PORT:3000]/'
 backup: hot
 map:
@@ -18,3 +21,7 @@ ports:
   3000/tcp: 8985
 environment:
   DATA_DIR: /data
+options:
+  SKIP_DF_COLLECTION: 'false'
+schema:
+  SKIP_DF_COLLECTION: 'str?'
