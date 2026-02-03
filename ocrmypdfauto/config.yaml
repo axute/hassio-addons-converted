@@ -1,0 +1,39 @@
+name: OCRmyPDFauto
+version: 1.0.0
+slug: ocrmypdfauto
+description: 'Old but good base: cmccambridge/ocrmypdf-auto, all files are stored in /share/ocrmypdfauto/.'
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: application
+boot: auto
+map:
+  - 'share:rw'
+environment:
+  USERMAP_UID: '0'
+  USERMAP_GID: '0'
+  OCR_CONFIG_DIR: /data
+  OCR_ARCHIVE_DIR: /share/ocrmypdfauto/archive
+  OCR_INPUT_DIR: /share/ocrmypdfauto/input
+  OCR_OUTPUT_DIR: /share/ocrmypdfauto/output
+options:
+  OCR_LANGUAGES: deu
+  OCR_NOTIFY_URL: ''
+  OCR_ACTION_ON_SUCCESS: ARCHIVE_INPUT_FILES
+  OCR_OUTPUT_MODE: MIRROR_TREE
+  OCR_PROCESS_EXISTING_ON_START: '1'
+  OCR_DO_NOT_RUN_SCHEDULER: '0'
+  OCR_USE_POLLING_SCHEDULER: '0'
+  OCR_VERBOSITY: ''
+schema:
+  OCR_LANGUAGES: 'str?'
+  OCR_NOTIFY_URL: 'str?'
+  OCR_ACTION_ON_SUCCESS: 'str?'
+  OCR_OUTPUT_MODE: 'str?'
+  OCR_PROCESS_EXISTING_ON_START: 'str?'
+  OCR_DO_NOT_RUN_SCHEDULER: 'str?'
+  OCR_USE_POLLING_SCHEDULER: 'str?'
+  OCR_VERBOSITY: 'str?'
