@@ -21,5 +21,5 @@ To use these add-ons, click the badge above or follow these steps:
 ## Support
 If you have issues with any of the add-ons, please create an issue in the corresponding repository or contact the maintainer.
 
-[repository-badge]: https://my.home-assistant.io/badges/repository.svg
+[repository-badge]: https://img.shields.io/badge/Add%20repository%20to%20my-Home%20Assistant-41BDF5?logo=home-assistant&style=for-the-badge
 [repository-url]: https://my.home-assistant.io/redirect/repository/?repository_url=https%3A%2F%2Fgithub.com%2Faxute%2Fhassio-addons-converted
