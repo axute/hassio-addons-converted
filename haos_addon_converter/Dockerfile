@@ -1,1 +1,1 @@
-FROM ghcr.io/axute/haos-addon-converter:1.1.6
+FROM ghcr.io/axute/haos-addon-converter:1.1.7

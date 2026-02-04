@@ -10,6 +10,8 @@ arch:
   - i386
 startup: application
 boot: auto
+panel_title: 'PM: apk'
+init_pm: apk
 webui: 'http://[HOST]:[PORT:3000]/'
 backup: hot
 map:
