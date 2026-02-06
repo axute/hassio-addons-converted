@@ -1,6 +1,13 @@
 #!/bin/sh
 set -e
 
+# Re-run with bash if available and not already in bash
+# We need to do this only IF bash is actually installed.
+if [ -z "$BASH_VERSION" ] && command -v bash >/dev/null 2>&1; then
+    echo "Switching to bash..."
+    exec bash "$0" "$@"
+fi
+
 # Auto-install bash and jq if PM is known
 if [ -n "$HAOS_CONVERTER_PM" ]; then
     echo "Detected package manager: $HAOS_CONVERTER_PM. Attempting to install bash and jq..."
@@ -44,6 +51,12 @@ if command -v bash >/dev/null 2>&1 && command -v jq >/dev/null 2>&1 && command -
             ln -s /usr/lib/bashio/bashio /usr/bin/bashio
             chmod +x /usr/bin/bashio
             echo "bashio v${BASHIO_VERSION} installed successfully"
+            
+            # Re-exec with bash again to ensure bashio is available in the current shell context
+            if [ -z "$BASH_VERSION" ]; then
+                echo "Switching to bash after bashio installation..."
+                exec bash "$0" "$@"
+            fi
         fi
         rm -rf /tmp/bashio
     fi

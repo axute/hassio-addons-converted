@@ -1,5 +1,5 @@
 name: OCRmyPDFauto
-version: 1.0.3
+version: 1.0.4
 slug: ocrmypdfauto
 description: 'Old but good base: cmccambridge/ocrmypdf-auto'
 arch:
