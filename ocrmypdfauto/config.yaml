@@ -1,5 +1,5 @@
 name: OCRmyPDFauto
-version: 1.0.2
+version: 1.0.3
 slug: ocrmypdfauto
 description: 'Old but good base: cmccambridge/ocrmypdf-auto'
 arch:
@@ -10,15 +10,20 @@ arch:
   - i386
 startup: application
 boot: auto
-map:
-  - 'share:rw'
+url: 'https://github.com/cmccambridge/ocrmypdf-auto'
+tmpfs: true
 environment:
+  HAOS_CONVERTER_BASHIO_VERSION: 0.17.5
+  HAOS_CONVERTER_PM: apt
   USERMAP_UID: '0'
   USERMAP_GID: '0'
   OCR_CONFIG_DIR: /data
   OCR_ARCHIVE_DIR: /share/ocrmypdfauto/archive
   OCR_INPUT_DIR: /share/ocrmypdfauto/input
   OCR_OUTPUT_DIR: /share/ocrmypdfauto/output
+map:
+  - type: share
+    readOnly: false
 options:
   OCR_LANGUAGES: deu
   OCR_NOTIFY_URL: ''

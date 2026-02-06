@@ -1,5 +1,5 @@
 name: dockhand
-version: 1.0.25
+version: 0.2.1
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -10,6 +10,7 @@ arch:
   - i386
 startup: application
 boot: auto
+url: 'https://dockhand.pro/manual/'
 tmpfs: true
 backup: hot
 environment:

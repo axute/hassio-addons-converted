@@ -1,4 +1,3 @@
-
 FROM fnsys/dockhand:v1.0.14
 COPY --from=hairyhenderson/gomplate:stable /gomplate /bin/gomplate
 

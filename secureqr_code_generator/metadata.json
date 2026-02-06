@@ -8,5 +8,9 @@
         "-c",
         "npm run dev -- --host=0.0.0.0"
     ],
-    "quirks": false
+    "quirks": false,
+    "allow_user_env": false,
+    "tmpfs": false,
+    "bashio_version": "0.17.5",
+    "has_startup_script": false
 }

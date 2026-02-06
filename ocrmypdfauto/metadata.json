@@ -1,3 +1,12 @@
 {
-    "detected_pm": "apt"
+    "detected_pm": "apt",
+    "quirks": true,
+    "allow_user_env": false,
+    "tmpfs": true,
+    "bashio_version": "0.17.5",
+    "has_startup_script": false,
+    "original_entrypoint": [
+        "\/app\/docker-entrypoint.sh"
+    ],
+    "original_cmd": null
 }

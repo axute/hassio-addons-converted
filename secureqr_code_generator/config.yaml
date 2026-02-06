@@ -1,5 +1,5 @@
 name: 'SecureQR-Code Generator'
-version: 1.0.1
+version: 1.0.2
 slug: secureqr_code_generator
 description: 'Dockerized SecureQR-Code Generator'
 arch:
@@ -10,6 +10,10 @@ arch:
   - i386
 startup: application
 boot: auto
+url: 'https://github.com/ChristianScheub/Typescript_Capacitor_SecureQR'
+environment:
+  HAOS_CONVERTER_BASHIO_VERSION: 0.17.5
+  HAOS_CONVERTER_PM: apk
 webui: 'http://[HOST]:[PORT:5173]/'
 ports:
-  5173/tcp: 5173
+  - 5173/tcp: 5173

@@ -1,3 +1,5 @@
+![Logo](icon.png)
+
 Credits to [cmccambridge/ocrmypdf-auto](https://github.com/cmccambridge/ocrmypdf-auto)
 
 ## Prepare

@@ -1,5 +1,5 @@
 name: 'HAOS Add-on Converter'
-version: 1.0.8
+version: 1.0.9
 slug: haos_addon_converter
 description: 'Web-Converter zum Konvertieren von Docker-Images in Home Assistant Add-ons.'
 arch:
@@ -10,6 +10,7 @@ arch:
   - i386
 startup: application
 boot: auto
+url: 'https://github.com/axute/haos-addon-converter'
 backup: hot
 environment:
   HAOS_CONVERTER_BASHIO_VERSION: 0.17.5
