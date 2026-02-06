@@ -13,5 +13,6 @@
     "quirks": true,
     "has_startup_script": true,
     "allow_user_env": true,
-    "bashio_version": "0.17.5"
+    "bashio_version": "0.17.5",
+    "tmpfs": true
 }

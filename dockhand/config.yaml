@@ -1,5 +1,5 @@
 name: dockhand
-version: 1.0.24
+version: 1.0.25
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -10,7 +10,7 @@ arch:
   - i386
 startup: application
 boot: auto
-tmpfs: false
+tmpfs: true
 backup: hot
 environment:
   HAOS_CONVERTER_BASHIO_VERSION: 0.17.5
