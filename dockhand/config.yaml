@@ -20,7 +20,7 @@ environment:
 webui: 'http://[HOST]:[PORT:3000]/'
 map:
   - type: config
-    readOnly: false
+    read_only: false
 options:
   SKIP_DF_COLLECTION: 'false'
   env_vars: []

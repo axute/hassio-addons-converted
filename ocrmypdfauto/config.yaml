@@ -23,7 +23,7 @@ environment:
   OCR_OUTPUT_DIR: /share/ocrmypdfauto/output
 map:
   - type: share
-    readOnly: false
+    read_only: false
 options:
   OCR_LANGUAGES: deu
   OCR_NOTIFY_URL: ''

@@ -23,4 +23,4 @@ panel_icon: 'mdi:toy-brick'
 panel_title: 'Addon Converter'
 map:
   - type: addons
-    readOnly: false
+    read_only: false
