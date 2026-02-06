@@ -44,8 +44,8 @@ if command -v bash >/dev/null 2>&1 && command -v jq >/dev/null 2>&1 && command -
             ln -s /usr/lib/bashio/bashio /usr/bin/bashio
             chmod +x /usr/bin/bashio
             echo "bashio v${BASHIO_VERSION} installed successfully"
-            
-            # Re-exec with bashio to ensure bashio is available in the current shell context
+
+            # Re-exec with bash again to ensure bashio is available in the current shell context
             if [ -z "$BASH_VERSION" ]; then
                 echo "Switching to bashio after bashio installation..."
                 exec bashio "$0" "$@"
@@ -62,17 +62,36 @@ if [ -f /data/options.json ]; then
     echo "-------------------------------------------------------"
     
     if command -v bashio >/dev/null 2>&1; then
-        echo "Using bashio to export options..."
+        echo "Using bashio and jq to export options..."
         
-        # bashio hat keine direkte Funktion um alle Optionen als ENV zu exportieren,
-        # aber wir können die Keys loopen oder bashio jq verwenden.
-        # Am einfachsten: bashio jq nutzen um die Keys zu bekommen.
-        KEYS=$(bashio::config.keys)
+        # 1. Alle Keys der ersten Ebene holen (außer env_vars)
+        # Wir nutzen jq direkt auf die Datei, da bashio::config.keys nicht existiert
+        KEYS=$(jq -r 'keys[] | select(. != "env_vars")' /data/options.json)
         for key in $KEYS; do
             value=$(bashio::config "$key")
             export "$key"="$value"
             echo "export $key=\"$value\""
         done
+
+        # 2. env_vars speziell behandeln
+        # Prüfen ob env_vars existiert und ein Array ist
+        if jq -e '.env_vars | type == "array"' /data/options.json >/dev/null 2>&1; then
+            echo "Extracting custom env_vars..."
+            # Wir holen jedes Element aus dem Array
+            ENV_VARS_COUNT=$(jq '.env_vars | length' /data/options.json)
+            i=0
+            while [ $i -lt "$ENV_VARS_COUNT" ]; do
+                # bashio::config kann auch Array-Indizes (z.B. env_vars[0])
+                entry=$(bashio::config "env_vars[$i]")
+                if [ -n "$entry" ] && echo "$entry" | grep -q "="; then
+                    key=$(echo "$entry" | cut -d'=' -f1)
+                    value=$(echo "$entry" | cut -d'=' -f2-)
+                    export "$key"="$value"
+                    echo "export $key=\"$value\""
+                fi
+                i=$((i+1))
+            done
+        fi
     elif command -v jq >/dev/null 2>&1; then
         echo "Using jq to export options..."
         # Extrahiere Schlüssel und Werte mit jq
