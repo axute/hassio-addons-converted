@@ -1,5 +1,5 @@
 FROM fnsys/dockhand:v1.0.14
-COPY --from=hairyhenderson/gomplate:latest /gomplate /bin/gomplate
+COPY --from=hairyhenderson/gomplate:stable /gomplate /bin/gomplate
 
 # Add wrapper script
 COPY run.sh /run.sh
