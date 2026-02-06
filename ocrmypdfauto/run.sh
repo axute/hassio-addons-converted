@@ -70,6 +70,14 @@ if [ -f /data/options.json ]; then
     
     if command -v bashio >/dev/null 2>&1; then
         echo "Using bashio to export options..."
+        
+        # Bashio functions need to be sourced. 
+        # The installer puts them in /usr/lib/bashio.
+        if [ -f /usr/lib/bashio/bashio ]; then
+            # shellcheck disable=SC1091
+            . /usr/lib/bashio/bashio
+        fi
+
         # bashio hat keine direkte Funktion um alle Optionen als ENV zu exportieren,
         # aber wir können die Keys loopen oder bashio jq verwenden.
         # Am einfachsten: bashio jq nutzen um die Keys zu bekommen.
