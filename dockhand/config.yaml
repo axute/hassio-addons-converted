@@ -1,5 +1,5 @@
 name: dockhand
-version: 1.0.23
+version: 1.0.24
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -10,14 +10,16 @@ arch:
   - i386
 startup: application
 boot: auto
+tmpfs: false
+backup: hot
 environment:
+  HAOS_CONVERTER_BASHIO_VERSION: 0.17.5
+  HAOS_CONVERTER_PM: apk
   DATA_DIR: /data
 webui: 'http://[HOST]:[PORT:3000]/'
-backup: hot
 map:
-  - 'config:rw'
-ports:
-  3000/tcp: 8985
+  - type: config
+    readOnly: false
 options:
   SKIP_DF_COLLECTION: 'false'
   env_vars: []
