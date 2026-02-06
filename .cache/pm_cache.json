@@ -1,5 +1,7 @@
 {
-  "fnsys\/dockhand:v1.0.14": "apk",
-  "cmccambridge\/ocrmypdf-auto:latest": "apt",
-  "ghcr.io\/axute\/secureqr-dockerized:main": "apk"
+    "fnsys\/dockhand:v1.0.14": "apk",
+    "cmccambridge\/ocrmypdf-auto:latest": "apt",
+    "ghcr.io\/axute\/secureqr-dockerized:main": "apk",
+    "vaultwarden:latest": "unknown",
+    "bitwarden\/passwordless-self-host:latest": "apt"
 }

@@ -1,1 +1,5 @@
-Docker image for this app: https://github.com/ChristianScheub/Typescript_Capacitor_SecureQR/
+![Logo](icon.png)
+
+# SecureQR-Code Generator
+
+Dockerized SecureQR-Code Generator

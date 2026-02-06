@@ -1,5 +1,5 @@
 name: dockhand
-version: 1.0.20
+version: 1.0.21
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -10,17 +10,18 @@ arch:
   - i386
 startup: application
 boot: auto
-panel_title: 'PM: apk'
-init_pm: apk
+environment:
+  DATA_DIR: /data
 webui: 'http://[HOST]:[PORT:3000]/'
 backup: hot
 map:
-  - 'share:rw'
+  - 'config:rw'
 ports:
   3000/tcp: 8985
-environment:
-  DATA_DIR: /data
 options:
   SKIP_DF_COLLECTION: 'false'
+  env_vars: []
 schema:
   SKIP_DF_COLLECTION: 'str?'
+  env_vars:
+    - str

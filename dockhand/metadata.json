@@ -1,3 +1,17 @@
 {
-    "detected_pm":  "apk"
+    "detected_pm": "apk",
+    "original_entrypoint": [
+        "\/sbin\/tini",
+        "--",
+        "\/usr\/local\/bin\/docker-entrypoint.sh"
+    ],
+    "original_cmd": [
+        "bun",
+        "run",
+        ".\/build\/index.js"
+    ],
+    "quirks": true,
+    "has_startup_script": true,
+    "allow_user_env": true,
+    "bashio_version": "0.17.5"
 }

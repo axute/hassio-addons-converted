@@ -1,3 +1,12 @@
 {
-    "detected_pm": "apk"
+    "detected_pm": "apk",
+    "original_entrypoint": [
+        "docker-entrypoint.sh"
+    ],
+    "original_cmd": [
+        "\/bin\/sh",
+        "-c",
+        "npm run dev -- --host=0.0.0.0"
+    ],
+    "quirks": false
 }
