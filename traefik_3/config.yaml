@@ -24,13 +24,13 @@ ingress_entry: /dashboard/
 panel_icon: 'mdi:link-variant'
 panel_title: traefik
 ports:
-  - 80/tcp: null
-  - 443/tcp: null
-  - 8080/tcp: null
+  80/tcp: null
+  443/tcp: null
+  8080/tcp: null
 ports_description:
-  - 80/tcp: HTTP
-  - 443/tcp: HTTPS
-  - 8080/tcp: Dashboard
+  80/tcp: HTTP
+  443/tcp: HTTPS
+  8080/tcp: Dashboard
 options:
   env_vars: []
 schema:

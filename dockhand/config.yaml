@@ -4,7 +4,7 @@ slug: dockhand
 description: 'Portainer Slayer'
 arch:
   - amd64
-  - arm64
+  - aarch64
 startup: application
 boot: auto
 url: 'https://dockhand.pro/manual/'
