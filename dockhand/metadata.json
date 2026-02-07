@@ -17,6 +17,6 @@
     "tmpfs": true,
     "architectures": [
         "amd64",
-        "arm64"
+        "aarch64"
     ]
 }

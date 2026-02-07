@@ -12,4 +12,4 @@ environment:
   HAOS_CONVERTER_PM: apk
 webui: 'http://[HOST]:[PORT:5173]/'
 ports:
-  - 5173/tcp: 5173
+  5173/tcp: 5173

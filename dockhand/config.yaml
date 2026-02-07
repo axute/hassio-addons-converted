@@ -16,7 +16,7 @@ environment:
   DATA_DIR: /data
 webui: 'http://[HOST]:[PORT:3000]/'
 ports:
-  - 3000/tcp: null
+  3000/tcp: null
 map:
   - type: config
     read_only: false
