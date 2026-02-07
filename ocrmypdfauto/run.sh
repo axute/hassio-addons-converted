@@ -1,13 +1,6 @@
 #!/bin/sh
 set -e
 
-# Re-run with bash if available and not already in bash
-# We need to do this only IF bash is actually installed.
-if [ -z "$BASH_VERSION" ] && command -v bash >/dev/null 2>&1; then
-    echo "Switching to bash..."
-    exec bash "$0" "$@"
-fi
-
 # Auto-install bash and jq if PM is known
 if [ -n "$HAOS_CONVERTER_PM" ]; then
     echo "Detected package manager: $HAOS_CONVERTER_PM. Attempting to install bash and jq..."
@@ -51,11 +44,11 @@ if command -v bash >/dev/null 2>&1 && command -v jq >/dev/null 2>&1 && command -
             ln -s /usr/lib/bashio/bashio /usr/bin/bashio
             chmod +x /usr/bin/bashio
             echo "bashio v${BASHIO_VERSION} installed successfully"
-            
+
             # Re-exec with bash again to ensure bashio is available in the current shell context
             if [ -z "$BASH_VERSION" ]; then
-                echo "Switching to bash after bashio installation..."
-                exec bash "$0" "$@"
+                echo "Switching to bashio after bashio installation..."
+                exec bashio "$0" "$@"
             fi
         fi
         rm -rf /tmp/bashio
@@ -69,24 +62,14 @@ if [ -f /data/options.json ]; then
     echo "-------------------------------------------------------"
     
     if command -v bashio >/dev/null 2>&1; then
-        echo "Using bashio to export options..."
-        
-        # Bashio functions need to be sourced. 
-        # The installer puts them in /usr/lib/bashio.
-        if [ -f /usr/lib/bashio/bashio ]; then
-            # shellcheck disable=SC1091
-            . /usr/lib/bashio/bashio
-        fi
-
-        # bashio hat keine direkte Funktion um alle Optionen als ENV zu exportieren,
-        # aber wir können die Keys loopen oder bashio jq verwenden.
-        # Am einfachsten: bashio jq nutzen um die Keys zu bekommen.
-        KEYS=$(bashio::config.keys)
+        echo "Using bashio and jq to export options..."
+        KEYS=$(jq -r 'keys[] | select(. != "env_vars")' /data/options.json)
         for key in $KEYS; do
             value=$(bashio::config "$key")
             export "$key"="$value"
             echo "export $key=\"$value\""
         done
+
     elif command -v jq >/dev/null 2>&1; then
         echo "Using jq to export options..."
         # Extrahiere Schlüssel und Werte mit jq

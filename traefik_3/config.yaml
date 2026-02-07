@@ -1,0 +1,38 @@
+name: 'traefik 3'
+version: 3.0.1
+slug: traefik_3
+description: 'Traefik for home assistant'
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+url: 'https://doc.traefik.io/traefik/'
+backup: hot
+environment:
+  HAOS_CONVERTER_BASHIO_VERSION: 0.17.5
+  HAOS_CONVERTER_PM: apk
+  TRAEFIK_CONFIGFILE: /data/traefik.yml
+  TRAEFIK_PROVIDERS_FILE_DIRECTORY: /data/dynamic
+  TRAEFIK_PROVIDERS_FILE_WATCH: 'true'
+  TRAEFIK_PROVIDERS_DOCKER: 'false'
+  TRAEFIK_API_DASHBOARD: 'true'
+ingress: true
+ingress_port: 8080
+ingress_stream: false
+ingress_entry: /dashboard/
+panel_icon: 'mdi:link-variant'
+panel_title: traefik
+ports:
+  - 80/tcp: null
+  - 443/tcp: null
+  - 8080/tcp: null
+ports_description:
+  - 80/tcp: HTTP
+  - 443/tcp: HTTPS
+  - 8080/tcp: Dashboard
+options:
+  env_vars: []
+schema:
+  env_vars:
+    - str

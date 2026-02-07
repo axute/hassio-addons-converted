@@ -1,0 +1,18 @@
+{
+    "detected_pm": "apk",
+    "quirks": true,
+    "allow_user_env": true,
+    "tmpfs": false,
+    "bashio_version": "0.17.5",
+    "has_startup_script": false,
+    "original_entrypoint": [
+        "\/entrypoint.sh"
+    ],
+    "original_cmd": [
+        "traefik"
+    ],
+    "architectures": [
+        "amd64",
+        "aarch64"
+    ]
+}

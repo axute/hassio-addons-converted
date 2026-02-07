@@ -3,11 +3,8 @@ version: 0.2.5
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
-  - aarch64
   - amd64
-  - armhf
-  - armv7
-  - i386
+  - arm64
 startup: application
 boot: auto
 url: 'https://dockhand.pro/manual/'
@@ -18,6 +15,8 @@ environment:
   HAOS_CONVERTER_PM: apk
   DATA_DIR: /data
 webui: 'http://[HOST]:[PORT:3000]/'
+ports:
+  - 3000/tcp: null
 map:
   - type: config
     read_only: false

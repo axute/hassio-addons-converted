@@ -1,13 +1,9 @@
 name: 'SecureQR-Code Generator'
-version: 1.0.2
+version: 1.0.3
 slug: secureqr_code_generator
 description: 'Dockerized SecureQR-Code Generator'
 arch:
-  - aarch64
   - amd64
-  - armhf
-  - armv7
-  - i386
 startup: application
 boot: auto
 url: 'https://github.com/ChristianScheub/Typescript_Capacitor_SecureQR'

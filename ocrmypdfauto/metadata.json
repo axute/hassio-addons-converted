@@ -8,5 +8,8 @@
     "original_entrypoint": [
         "\/app\/docker-entrypoint.sh"
     ],
-    "original_cmd": null
+    "original_cmd": null,
+    "architectures": [
+        "amd64"
+    ]
 }

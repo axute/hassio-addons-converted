@@ -12,5 +12,8 @@
     "allow_user_env": false,
     "tmpfs": false,
     "bashio_version": "0.17.5",
-    "has_startup_script": false
+    "has_startup_script": false,
+    "architectures": [
+        "amd64"
+    ]
 }
