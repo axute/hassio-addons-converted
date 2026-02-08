@@ -1,5 +1,5 @@
 {
-    "detected_pm": null,
+    "detected_pm": "apt",
     "quirks": false,
     "allow_user_env": false,
     "tmpfs": false,
