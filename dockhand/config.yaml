@@ -1,5 +1,5 @@
 name: dockhand
-version: 0.2.7
+version: 0.2.8
 slug: dockhand
 description: 'Portainer Slayer'
 arch:
@@ -10,6 +10,8 @@ boot: auto
 url: 'https://dockhand.pro/manual/'
 tmpfs: true
 backup: hot
+timeout: 20
+watchdog: 'http://[HOST]:[PORT:3000]/'
 environment:
   HAOS_CONVERTER_BASHIO_VERSION: 0.17.5
   HAOS_CONVERTER_PM: apk
