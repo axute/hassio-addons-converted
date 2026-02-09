@@ -1,0 +1,39 @@
+name: Update Changelog from Main Repo
+
+on:
+  push:
+    paths:
+      - 'haos_addon_converter/**'
+  workflow_dispatch:
+
+jobs:
+  update-changelog:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout data repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get latest release notes from main repo
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Hole die Release Notes des neuesten Releases vom Haupt-Repository
+          # Das Haupt-Repository ist axute/haos-addon-converter
+          gh release view --repo axute/haos-addon-converter --json body --jq .body > haos_addon_converter/CHANGELOG.md
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if [[ -n $(git status --porcelain haos_addon_converter/CHANGELOG.md) ]]; then
+            git add haos_addon_converter/CHANGELOG.md
+            git commit -m "docs: update CHANGELOG.md from main repository"
+            git push
+          else
+            echo "No changes to CHANGELOG.md"
+          fi
