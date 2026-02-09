@@ -1,7 +1,7 @@
 # Changelog
-## [1.2.8] - 2026-02-09
+## [1.2.10] - 2026-02-09
 
 ### ⚙️ Miscellaneous Tasks
 
-- Enhance release workflow with manual trigger, dynamic naming, and improved tagging logic
+- Pass dynamic tags between workflows for improved versioning and automation
 
