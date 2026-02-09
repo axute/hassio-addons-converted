@@ -10,6 +10,7 @@
     ],
     "original_cmd": null,
     "architectures": [
-        "amd64"
+        "amd64",
+        "aarch64"
     ]
 }
