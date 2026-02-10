@@ -1,4 +1,4 @@
-FROM fnsys/dockhand:v1.0.16
+FROM fnsys/dockhand:v1.0.17
 COPY --from=hairyhenderson/gomplate:stable /gomplate /bin/gomplate
 
 # Add wrapper script
