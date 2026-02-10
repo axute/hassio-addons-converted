@@ -1,5 +1,5 @@
 name: 'HAOS App Converter'
-version: 1.3.2
+version: 1.3.3
 slug: haos_app_converter
 description: 'Web-Converter zum Konvertieren von Docker-Images in Home Assistant Apps.'
 arch:
