@@ -1,4 +1,4 @@
-FROM traefik:v3.6.7
+FROM traefik:v3.6.8
 COPY --from=hairyhenderson/gomplate:stable /gomplate /bin/gomplate
 
 # Add wrapper script

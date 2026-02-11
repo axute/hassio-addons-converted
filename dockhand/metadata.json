@@ -18,5 +18,7 @@
     "architectures": [
         "amd64",
         "aarch64"
-    ]
+    ],
+    "auto_update": false,
+    "version_fixation": true
 }

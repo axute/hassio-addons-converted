@@ -1,5 +1,5 @@
 name: 'traefik 3'
-version: 3.0.1
+version: 3.6.8
 slug: traefik_3
 description: 'Traefik for home assistant'
 arch:
@@ -22,6 +22,7 @@ ingress_port: 8080
 ingress_stream: false
 ingress_entry: /dashboard/
 panel_icon: 'mdi:link-variant'
+panel_admin: true
 panel_title: traefik
 ports:
   80/tcp: null
