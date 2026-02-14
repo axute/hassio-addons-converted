@@ -3,7 +3,7 @@ name: Update Changelog from Main Repo
 on:
   push:
     paths:
-      - 'haos_addon_converter/**'
+      - 'haos_app_converter/**'
   workflow_dispatch:
 
 jobs:
@@ -22,8 +22,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Hole die Release Notes des neuesten Releases vom Haupt-Repository
-          # Das Haupt-Repository ist axute/haos-addon-converter
-          gh release view --repo axute/haos-addon-converter --json body --jq .body > haos_addon_converter/CHANGELOG.md
+          # Das Haupt-Repository ist axute/haos-app-converter
+          gh release view --repo axute/haos-app-converter --json body --jq .body > haos_app_converter/CHANGELOG.md
 
       - name: Commit and push changes
         run: |
@@ -31,7 +31,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
           if [[ -n $(git status --porcelain haos_addon_converter/CHANGELOG.md) ]]; then
-            git add haos_addon_converter/CHANGELOG.md
+            git add haos_app_converter/CHANGELOG.md
             git commit -m "docs: update CHANGELOG.md from main repository"
             git push
           else

@@ -1,16 +1,15 @@
 {
-    "detected_pm": "apt",
-    "quirks": false,
     "allow_user_env": false,
-    "tmpfs": false,
-    "bashio_version": "0.17.5",
-    "has_startup_script": false,
-    "original_entrypoint": [
-        "entrypoint.sh"
-    ],
-    "original_cmd": null,
     "architectures": [
         "amd64",
         "aarch64"
-    ]
+    ],
+    "auto_update": false,
+    "bashio_version": "0.17.5",
+    "detected_pm": "apt",
+    "has_startup_script": false,
+    "original_cmd": "",
+    "quirks": false,
+    "tmpfs": false,
+    "version_fixation": true
 }
