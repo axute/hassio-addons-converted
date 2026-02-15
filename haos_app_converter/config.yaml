@@ -29,5 +29,5 @@ slug: haos_app_converter
 startup: application
 timeout: 20
 url: 'https://github.com/axute/haos-app-converter'
-version: 1.6.0
+version: 1.7.0
 watchdog: 'http://[HOST]:[PORT:80]/'
