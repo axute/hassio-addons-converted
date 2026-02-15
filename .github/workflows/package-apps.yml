@@ -1,0 +1,58 @@
+name: Package Changed Apps
+
+on:
+  push:
+    paths:
+      - '**/config.yaml'
+      - '**/Dockerfile'
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Identify Changed Apps
+        id: changed-apps
+        run: |
+          # Find all directories in data/ that have changed (excluding hidden directories)
+          # We look for folders containing a config.yaml
+          CHANGED_DIRS=$(git diff --name-only HEAD^ HEAD | grep '^data/' | cut -d '/' -f 2 | sort -u | grep -v '^\.' || true)
+          echo "apps=$CHANGED_DIRS" >> $GITHUB_OUTPUT
+
+      - name: Create ZIP Packages
+        if: steps.changed-apps.outputs.apps != ''
+        run: |
+          mkdir -p dist
+          for app in ${{ steps.changed-apps.outputs.apps }}; do
+            if [ -d "data/$app" ]; then
+              echo "Packaging $app..."
+              # Create ZIP without the 'data/' path prefix
+              (cd data/$app && zip -r "../../dist/$app.zip" .)
+            fi
+          done
+
+      - name: Upload Artifacts
+        if: steps.changed-apps.outputs.apps != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-packages
+          path: dist/*.zip
+
+      - name: Create Release
+        if: steps.changed-apps.outputs.apps != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Create or update a release named "apps-latest" with the ZIP files as assets
+          TAG_NAME="apps-latest"
+          gh release delete $TAG_NAME --yes --cleanup-tag || true
+          gh release create $TAG_NAME dist/*.zip \
+            --title "Latest App Packages" \
+            --notes "Automatically generated packages for changed apps."
