@@ -1,3 +1,3 @@
 # HAOS App Converter
 
-Web-Converter zum Konvertieren von Docker-Images in Home Assistant Apps.
+Web converter for converting Docker images into Home Assistant apps.
