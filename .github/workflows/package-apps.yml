@@ -21,9 +21,10 @@ jobs:
       - name: Identify Changed Apps
         id: changed-apps
         run: |
-          # Find all directories in data/ that have changed (excluding hidden directories)
+          # Find all directories that have changed (excluding hidden directories)
           # We look for folders containing a config.yaml
-          CHANGED_DIRS=$(git diff --name-only HEAD^ HEAD | grep '^data/' | cut -d '/' -f 2 | sort -u | grep -v '^\.' || true)
+          # Since this is a separate repo, app folders are in the root
+          CHANGED_DIRS=$(git diff --name-only HEAD^ HEAD | cut -d '/' -f 1 | sort -u | grep -v '^\.' || true)
           echo "apps=$CHANGED_DIRS" >> $GITHUB_OUTPUT
 
       - name: Create ZIP Packages
@@ -31,10 +32,10 @@ jobs:
         run: |
           mkdir -p dist
           for app in ${{ steps.changed-apps.outputs.apps }}; do
-            if [ -d "data/$app" ]; then
+            if [ -d "$app" ] && [ -f "$app/config.yaml" ]; then
               echo "Packaging $app..."
-              # Create ZIP without the 'data/' path prefix
-              (cd data/$app && zip -r "../../dist/$app.zip" .)
+              # Create ZIP from the app directory
+              (cd "$app" && zip -r "../dist/$app.zip" .)
             fi
           done
 
