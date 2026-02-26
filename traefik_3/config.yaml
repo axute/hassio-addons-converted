@@ -4,28 +4,6 @@ arch:
 backup: hot
 boot: auto
 description: 'Traefik for home assistant'
-env_vars:
-  - key: HAOS_CONVERTER_BASHIO_VERSION
-    value: 0.17.5
-    editable: false
-  - key: HAOS_CONVERTER_PM
-    value: apk
-    editable: false
-  - key: TRAEFIK_CONFIGFILE
-    value: /data/traefik.yml
-    editable: false
-  - key: TRAEFIK_PROVIDERS_FILE_DIRECTORY
-    value: /data/dynamic
-    editable: false
-  - key: TRAEFIK_PROVIDERS_FILE_WATCH
-    value: 'true'
-    editable: false
-  - key: TRAEFIK_PROVIDERS_DOCKER
-    value: 'false'
-    editable: false
-  - key: TRAEFIK_API_DASHBOARD
-    value: 'true'
-    editable: false
 environment:
   HAOS_CONVERTER_BASHIO_VERSION: 0.17.5
   HAOS_CONVERTER_PM: apk

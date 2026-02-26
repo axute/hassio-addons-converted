@@ -8,9 +8,7 @@
     "bashio_version": "0.17.5",
     "detected_pm": "apk",
     "has_startup_script": false,
-    "original_cmd": [
-        "traefik"
-    ],
+    "original_cmd": "traefik",
     "original_entrypoint": [
         "\/entrypoint.sh"
     ],
