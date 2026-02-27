@@ -10,6 +10,7 @@
     "has_startup_script": false,
     "original_cmd": "",
     "quirks": false,
+    "security_rating": 7,
     "tmpfs": false,
     "version_fixation": true
 }
