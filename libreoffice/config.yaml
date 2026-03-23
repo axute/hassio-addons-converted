@@ -1,0 +1,26 @@
+arch:
+  - amd64
+  - aarch64
+backup: hot
+boot: auto
+description: 'Alpha: LibreOffice for HomeAssistant'
+environment:
+  HAOS_CONVERTER_BASHIO_VERSION: 0.17.5
+  HAOS_CONVERTER_PM: apk
+host_ipc: true
+init: false
+kernel_modules: true
+map:
+  - type: share
+    read_only: false
+name: LibreOffice
+ports:
+  3001/tcp: 3001
+privileged:
+  - SYS_ADMIN
+  - SYS_MODULE
+slug: libreoffice
+startup: application
+tmpfs: true
+version: 1.0.0
+webui: 'https://[HOST]:[PORT:3001]/'

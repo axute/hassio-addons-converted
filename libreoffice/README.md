@@ -1,0 +1,1 @@
+Das ist nur eine schnell funktionstüchtig gemachte Version von LibreOffice, kein Support dafür.
