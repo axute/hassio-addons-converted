@@ -1,1 +1,1 @@
-FROM ghcr.io/axute/haos-app-converter:1.10.1
+FROM ghcr.io/axute/haos-app-converter:1.10.2
